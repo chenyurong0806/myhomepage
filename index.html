@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr. LychenR的主页</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+
+  --bg:#0a0c10;
+  --bg2:#12151c;
+  --panel:#151922;
+  --panel2:#1b202b;
+
+  --line:rgba(255,255,255,.08);
+
+  --text:#edf2ff;
+  --muted:#8c96ad;
+
+  --white:rgba(255,255,255,.95);
+
+  --accent:#00e0ff;
+  --accent2:#5d8dff;
+
+  --shadow:
+    0 10px 30px rgba(0,0,0,.45);
+
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  font-family:
+    "Noto Sans SC",
+    sans-serif;
+
+  background:
+    linear-gradient(
+      180deg,
+      #090b0f 0%,
+      #10131a 100%
+    );
+
+  color:var(--text);
+
+  overflow-x:hidden;
+
+}
+
+/* ===== 背景 ===== */
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255,255,255,.03) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.03) 1px,
+      transparent 1px
+    );
+
+  background-size:50px 50px;
+
+  z-index:-3;
+
+}
+
+body::after{
+
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  background:
+
+    radial-gradient(
+      circle at top left,
+      rgba(0,224,255,.12),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at bottom right,
+      rgba(93,141,255,.12),
+      transparent 30%
+    );
+
+  z-index:-2;
+
+}
+
+/* ===== 顶部导航 ===== */
+
+.topbar{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+
+  height:74px;
+
+  z-index:999;
+
+  background:
+    rgba(10,12,16,.82);
+
+  backdrop-filter:blur(12px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.06);
+
+}
+
+.top-inner{
+
+  width:min(1300px,calc(100% - 40px));
+
+  height:100%;
+
+  margin:auto;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+}
+
+.logo{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:16px;
+
+}
+
+.logo-mark{
+
+  width:42px;
+  height:42px;
+
+  border:
+    1px solid rgba(255,255,255,.15);
+
+  background:
+    linear-gradient(
+      135deg,
+      #1c2330,
+      #0f1218
+    );
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+.logo-mark::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:7px;
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
+}
+
+.logo-mark::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:10px;
+  height:10px;
+
+  background:var(--accent);
+
+  right:6px;
+  bottom:6px;
+
+}
+
+.logo-text{
+
+  font-family:"Orbitron",sans-serif;
+
+  letter-spacing:3px;
+
+}
+
+.logo-text strong{
+
+  display:block;
+
+  font-size:18px;
+
+}
+
+.logo-text span{
+
+  font-size:11px;
+
+  color:var(--muted);
+
+}
+
+.nav{
+
+  display:flex;
+
+  gap:18px;
+
+}
+
+.nav a{
+
+  position:relative;
+
+  text-decoration:none;
+
+  color:var(--white);
+
+  font-size:14px;
+
+  letter-spacing:1px;
+
+  padding:8px 0;
+
+}
+
+.nav a::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:0;
+
+  width:0;
+  height:1px;
+
+  background:var(--accent);
+
+  transition:.3s;
+
+}
+
+.nav a:hover::after{
+
+  width:100%;
+
+}
+
+/* ===== HERO ===== */
+
+.hero{
+
+  min-height:100vh;
+
+  display:flex;
+
+  align-items:center;
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+.hero-bg{
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(10,12,16,.96) 20%,
+      rgba(10,12,16,.75) 50%,
+      rgba(10,12,16,.5) 100%
+    ),
+    url("bg.jpg")
+    center center/cover no-repeat;
+
+  z-index:-1;
+
+  filter:brightness(.9);
+
+}
+
+/* 右侧装饰线 */
+
+.hero-lines{
+
+  position:absolute;
+
+  right:6%;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:280px;
+  height:500px;
+
+  border:
+    1px solid rgba(255,255,255,.05);
+
+}
+
+.hero-lines::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:20px;
+  top:20px;
+
+  width:100%;
+  height:100%;
+
+  border:
+    1px solid rgba(255,255,255,.03);
+
+}
+
+.hero-content{
+
+  width:min(1300px,calc(100% - 40px));
+
+  margin:auto;
+
+  padding-top:70px;
+
+}
+
+.hero-sub{
+
+  color:var(--accent);
+
+  font-size:13px;
+
+  letter-spacing:4px;
+
+  margin-bottom:18px;
+
+}
+
+.hero-title{
+
+  font-family:"Orbitron",sans-serif;
+
+  font-size:clamp(58px,10vw,110px);
+
+  line-height:.95;
+
+  font-weight:800;
+
+  letter-spacing:4px;
+
+}
+
+.hero-title span{
+
+  color:transparent;
+
+  -webkit-text-stroke:
+    1px rgba(255,255,255,.9);
+
+}
+
+.hero-desc{
+
+  margin-top:28px;
+
+  width:min(560px,100%);
+
+  color:var(--muted);
+
+  line-height:2;
+
+  font-size:15px;
+
+}
+
+.hero-actions{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:18px;
+
+  margin-top:40px;
+
+}
+
+.btn{
+
+  position:relative;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-width:190px;
+
+  height:56px;
+
+  padding:0 24px;
+
+  text-decoration:none;
+
+  color:white;
+
+  overflow:hidden;
+
+  letter-spacing:1px;
+
+  font-size:14px;
+
+  transition:.3s;
+
+}
+
+.btn-primary{
+
+  background:
+    linear-gradient(
+      135deg,
+      #00d2ff,
+      #3a7bff
+    );
+
+}
+
+.btn-secondary{
+
+  border:
+    1px solid rgba(255,255,255,.15);
+
+  background:
+    rgba(255,255,255,.03);
+
+}
+
+.btn::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.25),
+      transparent
+    );
+
+  transform:translateX(-120%);
+
+}
+
+.btn:hover::before{
+
+  animation:shine 1.2s;
+
+}
+
+@keyframes shine{
+
+  100%{
+    transform:translateX(120%);
+  }
+
+}
+
+.btn:hover{
+
+  transform:translateY(-3px);
+
+}
+
+/* ===== 信息区 ===== */
+
+.section{
+
+  width:min(1300px,calc(100% - 40px));
+
+  margin:auto;
+
+  padding:100px 0;
+
+}
+
+.section-head{
+
+  display:flex;
+
+  align-items:end;
+
+  justify-content:space-between;
+
+  margin-bottom:40px;
+
+}
+
+.section-title{
+
+  font-family:"Orbitron",sans-serif;
+
+  font-size:42px;
+
+  letter-spacing:2px;
+
+}
+
+.section-sub{
+
+  color:var(--muted);
+
+  margin-top:10px;
+
+  font-size:14px;
+
+}
+
+.grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:20px;
+
+}
+
+.card{
+
+  position:relative;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.015)
+    );
+
+  border:
+    1px solid rgba(255,255,255,.06);
+
+  padding:28px;
+
+  min-height:240px;
+
+  overflow:hidden;
+
+  transition:.35s;
+
+}
+
+.card::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:3px;
+  height:100%;
+
+  background:var(--accent);
+
+  opacity:.7;
+
+}
+
+.card:hover{
+
+  transform:translateY(-6px);
+
+  border-color:
+    rgba(0,224,255,.28);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.35);
+
+}
+
+.card-icon{
+
+  font-size:34px;
+
+  margin-bottom:22px;
+
+}
+
+.card-title{
+
+  font-size:22px;
+
+  margin-bottom:14px;
+
+}
+
+.card-desc{
+
+  color:var(--muted);
+
+  line-height:1.9;
+
+  font-size:14px;
+
+}
+
+.card-link{
+
+  position:absolute;
+
+  left:28px;
+  bottom:24px;
+
+  color:var(--accent);
+
+  text-decoration:none;
+
+  font-size:13px;
+
+  letter-spacing:1px;
+
+}
+
+/* ===== PROFILE ===== */
+
+.profile{
+
+  display:grid;
+
+  grid-template-columns:
+    360px 1fr;
+
+  gap:40px;
+
+  align-items:center;
+
+}
+
+.avatar-box{
+
+  position:relative;
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  padding:20px;
+
+  background:
+    rgba(255,255,255,.02);
+
+}
+
+.avatar{
+
+  width:100%;
+
+  aspect-ratio:1/1;
+
+  object-fit:cover;
+
+  display:block;
+
+  filter:contrast(1.05);
+
+}
+
+.avatar-box::after{
+
+  content:"";
+
+  position:absolute;
+
+  right:-10px;
+  top:-10px;
+
+  width:80px;
+  height:80px;
+
+  border-top:
+    2px solid var(--accent);
+
+  border-right:
+    2px solid var(--accent);
+
+}
+
+.profile-info h2{
+
+  font-size:52px;
+
+  font-family:"Orbitron",sans-serif;
+
+}
+
+.profile-info p{
+
+  margin-top:20px;
+
+  line-height:2;
+
+  color:var(--muted);
+
+}
+
+.tags{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+
+  margin-top:28px;
+
+}
+
+.tag{
+
+  padding:10px 14px;
+
+  background:
+    rgba(255,255,255,.03);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  color:#dbe6ff;
+
+  font-size:13px;
+
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+
+  border-top:
+    1px solid rgba(255,255,255,.06);
+
+  padding:30px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+}
+
+/* ===== 响应式 ===== */
+
+@media(max-width:1000px){
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .profile{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .nav{
+    display:none;
+  }
+
+  .hero-title{
+    font-size:58px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-title{
+    font-size:34px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 顶部 -->
+
+<header class="topbar">
+
+  <div class="top-inner">
+
+    <div class="logo">
+
+      <div class="logo-mark"></div>
+
+      <div class="logo-text">
+        <strong>LYCHENR</strong>
+        <span>PERSONAL TERMINAL</span>
+      </div>
+
+    </div>
+
+    <nav class="nav">
+      <a href="#profile">PROFILE</a>
+      <a href="#navigation">NAVIGATION</a>
+      <a href="https://github.com/chenyurong0806" target="_blank">GITHUB</a>
+      <a href="https://space.bilibili.com/1569750390" target="_blank">BILIBILI</a>
+    </nav>
+
+  </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-bg"></div>
+
+  <div class="hero-lines"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-sub">
+      RHODES ISLAND STYLE PERSONAL PAGE
+    </div>
+
+    <h1 class="hero-title">
+      Dr. LYCHENR<br>
+      <span>CHENYURONG</span>
+    </h1>
+
+    <div class="hero-desc">
+      一个偏向二次元与科技风格的个人主页。
+      用于展示个人信息、项目、常用网站导航以及创作内容。
+      风格参考《明日方舟》官网视觉设计，融合工业感、HUD UI 与赛博氛围。
+    </div>
+
+    <div class="hero-actions">
+
+      <a href="#navigation" class="btn btn-primary">
+        ENTER TERMINAL
+      </a>
+
+      <a href="https://github.com/chenyurong0806"
+         target="_blank"
+         class="btn btn-secondary">
+        OPEN GITHUB
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROFILE -->
+
+<section class="section" id="profile">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-title">
+        PROFILE
+      </div>
+
+      <div class="section-sub">
+        个人信息 / PERSONAL INFORMATION
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="profile">
+
+    <div class="avatar-box">
+
+      <img
+        src="avatar.jpg"
+        alt="头像"
+        class="avatar"
+      >
+
+    </div>
+
+    <div class="profile-info">
+
+      <h2>陈誉荣</h2>
+
+      <p>
+        Dr. LychenR。
+        喜欢二次元、科技风视觉设计、Cloudflare 建站、前端开发以及 AI 相关内容。
+        当前正在搭建属于自己的个人生态，包括个人主页、博客、下载站与网盘系统。
+      </p>
+
+      <div class="tags">
+
+        <div class="tag">FRONTEND</div>
+        <div class="tag">CLOUDFLARE</div>
+        <div class="tag">ANIME STYLE</div>
+        <div class="tag">AI TOOLS</div>
+        <div class="tag">WEB DESIGN</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- NAVIGATION -->
+
+<section class="section" id="navigation">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-title">
+        NAVIGATION
+      </div>
+
+      <div class="section-sub">
+        常用站点导航 / QUICK ACCESS
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <div class="card-icon">☁</div>
+
+      <div class="card-title">
+        Personal Drive
+      </div>
+
+      <div class="card-desc">
+        Cloudflare + GitHub 构建的个人网盘系统。
+      </div>
+
+      <a
+        class="card-link"
+        href="https://pan.chenyurong.qzz.io/"
+        target="_blank">
+
+        OPEN ↗
+
+      </a>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">⌘</div>
+
+      <div class="card-title">
+        GitHub
+      </div>
+
+      <div class="card-desc">
+        查看我的项目、代码仓库与开发记录。
+      </div>
+
+      <a
+        class="card-link"
+        href="https://github.com/chenyurong0806"
+        target="_blank">
+
+        OPEN ↗
+
+      </a>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">◉</div>
+
+      <div class="card-title">
+        Bilibili
+      </div>
+
+      <div class="card-desc">
+        查看视频、动态与个人空间内容。
+      </div>
+
+      <a
+        class="card-link"
+        href="https://space.bilibili.com/1569750390"
+        target="_blank">
+
+        OPEN ↗
+
+      </a>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icon">✦</div>
+
+      <div class="card-title">
+        Personal Blog
+      </div>
+
+      <div class="card-desc">
+        记录教程、文章与日常创作内容。
+      </div>
+
+      <a
+        class="card-link"
+        href="#"
+        target="_blank">
+
+        OPEN ↗
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+
+  © 2026 LYCHENR // RHODES ISLAND STYLE PERSONAL PAGE
+
+</footer>
+
+</body>
+</html>
